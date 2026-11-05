@@ -12,8 +12,8 @@ type BookShelfProps = {
 export default function BookShelf({ id, title, subtitle, books }: BookShelfProps) {
   return (
     <section id={id} className="scroll-mt-20 py-4 md:py-6">
-      <div className="mb-1 flex items-baseline justify-between px-4 md:mb-4 md:px-0">
-        <div>
+      <div className="mb-1 flex items-center justify-between gap-2 px-4 md:mb-4 md:px-0">
+        <div className="min-w-0 flex-1">
           <h3 className="font-['Outfit',sans-serif] text-lg font-semibold tracking-tight text-[#151c27] md:text-2xl">
             {title}
           </h3>
@@ -21,7 +21,7 @@ export default function BookShelf({ id, title, subtitle, books }: BookShelfProps
         </div>
         <Link
           href={id ? `/search?category=${id}` : "/search"}
-          className="flex items-center gap-0.5 font-['Outfit',sans-serif] text-[13px] font-medium text-[#45464c] transition-colors hover:text-black md:text-[15px]"
+          className="inline-flex min-h-11 shrink-0 items-center justify-center gap-0.5 whitespace-nowrap rounded-md px-2 font-['Outfit',sans-serif] text-[13px] font-medium text-[#45464c] transition-colors hover:text-black focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#004085] md:min-h-0 md:px-0 md:text-[15px]"
         >
           See all
           <ChevronRightIcon className="h-4 w-4" />

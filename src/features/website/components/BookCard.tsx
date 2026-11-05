@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { toSlug } from "@/data/slug";
-import { ShoppingBagIcon } from "./Icons";
+import AddToCartButton from "./cartpage/AddToCartButton";
 
 export type Book = {
   title: string;
@@ -37,13 +37,10 @@ export default function BookCard({ title, author, price, src }: Book) {
       </Link>
 
       {/* Add to Cart is NOT inside the link, so it works without opening the book */}
-      <button
-        type="button"
+      <AddToCartButton
+        book={{ title, author, price, src }}
         className="flex h-8 w-full items-center justify-center gap-1 rounded-lg bg-[#004085] font-['Outfit',sans-serif] text-[11px] font-semibold text-white transition-colors hover:bg-[#082b54] active:bg-[#072447] md:h-10 md:gap-2 md:text-sm"
-      >
-        <ShoppingBagIcon className="h-4 w-4" />
-        Add to Cart
-      </button>
+      />
     </article>
   );
 }

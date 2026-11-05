@@ -1,11 +1,12 @@
 import Link from "next/link";
-import { BookOpenIcon, SearchIcon, ShoppingBagIcon, UserIcon } from "./Icons";
+import CartLink from "./cartpage/CartLink";
+import { BookOpenIcon, SearchIcon, UserIcon } from "./Icons";
 
 const navLinks = [
-  { label: "New Arrivals", href: "#new-arrivals" },
-  { label: "Fiction", href: "#fiction" },
-  { label: "History", href: "#history" },
-  { label: "Non-Fiction & Essays", href: "#non-fiction" },
+  { label: "New Arrivals", href: "/search?category=new-arrivals" },
+  { label: "Fiction", href: "/search?category=fiction" },
+  { label: "History", href: "/search?category=history" },
+  { label: "Non-Fiction & Essays", href: "/search?category=non-fiction" },
 ];
 
 export default function Navbar() {
@@ -23,36 +24,27 @@ export default function Navbar() {
         {/* Desktop links */}
         <nav className="hidden items-center gap-8 lg:flex">
           {navLinks.map((link) => (
-            <a
+            <Link
               key={link.href}
               href={link.href}
               className="font-['Outfit',sans-serif] text-[15px] font-medium text-[#45464c] transition-colors hover:text-black"
             >
               {link.label}
-            </a>
+            </Link>
           ))}
         </nav>
 
         {/* Actions */}
         <div className="flex items-center gap-1">
-          <a
-            href="#"
+          <Link
+            href="/search"
             aria-label="Search"
             className="flex h-11 w-11 items-center justify-center rounded-full text-[#151c27] transition-colors hover:text-black"
           >
             <SearchIcon className="h-5 w-5" />
-          </a>
+          </Link>
 
-          <a
-            href="#"
-            aria-label="Bag"
-            className="relative flex h-11 w-11 items-center justify-center rounded-full text-[#151c27] transition-colors hover:text-black"
-          >
-            <ShoppingBagIcon className="h-5 w-5" />
-            <span className="absolute right-2 top-2 flex h-4 w-4 items-center justify-center rounded-full bg-[#fe932c] font-['Outfit',sans-serif] text-[10px] font-bold text-white">
-              2
-            </span>
-          </a>
+          <CartLink />
 
           <a
             href="#"

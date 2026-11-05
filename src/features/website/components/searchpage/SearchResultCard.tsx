@@ -1,8 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import { toSlug } from "@/data/slug";
+import AddToCartButton from "../cartpage/AddToCartButton";
 import type { Book } from "../BookCard";
-import { ShoppingBagIcon } from "../Icons";
 
 export default function SearchResultCard({ title, author, price, src }: Book) {
   return (
@@ -32,13 +32,10 @@ export default function SearchResultCard({ title, author, price, src }: Book) {
         <span className="font-['Outfit',sans-serif] text-lg font-semibold text-[#151c27]">
           {price}
         </span>
-        <button
-          type="button"
+        <AddToCartButton
+          book={{ title, author, price, src }}
           className="flex h-10 w-full items-center justify-center gap-1.5 rounded-lg bg-[#004098] font-['Outfit',sans-serif] text-sm font-semibold text-white transition-colors hover:bg-[#082b54] active:bg-[#072447] md:h-11"
-        >
-          <ShoppingBagIcon className="h-4 w-4" />
-          Add to Cart
-        </button>
+        />
       </div>
     </article>
   );

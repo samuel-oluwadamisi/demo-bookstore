@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { categories } from "@/data/categories";
 import type { CatalogBook } from "@/data/mockData";
+import AddToCartButton from "../components/cartpage/AddToCartButton";
 import type { Book } from "../components/BookCard";
 import BookShelf from "../components/BookShelf";
 import {
@@ -12,7 +13,6 @@ import {
   InfoIcon,
   ShareIcon,
   ShieldCheckIcon,
-  ShoppingBagIcon,
   TruckIcon,
 } from "../components/Icons";
 
@@ -104,13 +104,12 @@ export default function BookDetailPage({ book, related }: BookDetailPageProps) {
 
           {/* Actions */}
           <div className="mt-5 flex w-full flex-col gap-2 md:max-w-md">
-            <button
-              type="button"
+            <AddToCartButton
+              book={book}
+              label={`Add to Cart — ${book.price}`}
+              iconClassName="h-5 w-5"
               className="flex h-12 w-full items-center justify-center gap-2 rounded-xl bg-[#004098] font-['Outfit',sans-serif] text-[15px] font-semibold text-white shadow-md transition-all hover:opacity-95 active:scale-[0.99]"
-            >
-              <ShoppingBagIcon className="h-5 w-5" />
-              Add to Cart — {book.price}
-            </button>
+            />
 
             <a
               href={`https://wa.me/?text=${encodeURIComponent(whatsappMessage)}`}
