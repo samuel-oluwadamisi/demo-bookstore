@@ -1,0 +1,7 @@
+// "Things Fall Apart" -> "things-fall-apart"
+export function toSlug(title: string) {
+  return title
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+}
